@@ -10,10 +10,7 @@ const MESSAGES = {
   },
 };
 
-const MONGODB_URL = 'mongodb://localhost/';
-
 module.exports = {
   ENDPOINTS,
   MESSAGES,
-  MONGODB_URL,
 };
