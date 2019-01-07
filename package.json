@@ -1,0 +1,23 @@
+{
+  "name": "tdd-node-todo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/magicsd/tdd-node-todo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/magicsd/tdd-node-todo/issues"
+  },
+  "homepage": "https://github.com/magicsd/tdd-node-todo#readme",
+  "devDependencies": {
+    "jest": "^23.6.0"
+  }
+}
