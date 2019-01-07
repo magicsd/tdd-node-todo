@@ -1,20 +1,9 @@
 const faker = require('faker');
 const supertest = require('supertest');
-const app = require('../src/');
+const { app } = require('../src/');
 const server = supertest(app);
 const Todo = require('../src/database/models/Todo');
-
-const ENDPOINTS = {
-  todo: '/todo',
-};
-
-const MESSAGES = {
-  todo: {
-    create : {
-      success: 'Todo created successfully',
-    },
-  },
-};
+const { ENDPOINTS, MESSAGES } = require('../src/constants/');
 
 const generateTodo = () => ({
   title: faker.lorem.sentence(),
@@ -33,7 +22,8 @@ describe('ToDo Creation Process', () => {
     expect(body.message).toBe(MESSAGES.todo.create.success)
 
     const todoFromDatabase = await Todo.find({ title: todo.title });
-    expect(todoFromDatabase.title).toBe(todo.title);
-    expect(todoFromDatabase.description).toBe(todo.description);
+
+    expect(todoFromDatabase[0].title).toBe(todo.title);
+    expect(todoFromDatabase[0].description).toBe(todo.description);
   });
 });
