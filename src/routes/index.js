@@ -11,8 +11,11 @@ module.exports = (app) => {
   });
 
   app.get(`${ENDPOINTS.todo}/:id`, async (req, res) => {
-    const todo = await Todo.findById(req.params.id);
-
-    res.json(todo);
+    try {
+      const todo = await Todo.findById(req.params.id);
+      res.json(todo);
+    } catch (e) {
+      res.status(404).json({ message: MESSAGES.todo.create.fail });
+    }
   })
 };

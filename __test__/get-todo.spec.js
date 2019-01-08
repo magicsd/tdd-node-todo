@@ -3,18 +3,31 @@ const { ENDPOINTS, MESSAGES } = require('../src/constants');
 const { generateTodo } = require('../utils/generate');
 const Todo = require('../src/database/models/Todo');
 
-describe('Get Single Todo', () => {
-  test('Should get single todo', async () => {
-    const todo = generateTodo();
+const getEndpoint = (id) => `${ENDPOINTS.todo}/${id}`
 
+describe('Get Single Todo', () => {
+  let todo;
+
+  beforeEach(() => {
+    todo = generateTodo();
+  })
+
+  test('Should get single todo', async () => {
     const createdTodo = await Todo.create(todo);
 
-    const { status, body } = await server.get(`${ENDPOINTS.todo}/${createdTodo.id}`);
+    const { status, body } = await server.get(getEndpoint(createdTodo.id));
 
     expect(status).toBe(200);
     expect(body).toEqual({
       ...todo,
       id: expect.any(String),
     });
+  });
+
+  test('Should get error message if todo was not found', async () => {
+    const { status, body } = await server.get(getEndpoint('123'));
+
+    expect(status).toBe(404);
+    expect(body.message).toBe(MESSAGES.todo.create.fail);
   });
 });
