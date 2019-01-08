@@ -1,5 +1,6 @@
 const ENDPOINTS = {
   todo: '/todo',
+  createTodo: '/todo/create',
 };
 
 const MESSAGES = {

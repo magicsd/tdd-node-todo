@@ -17,5 +17,10 @@ module.exports = (app) => {
     } catch (e) {
       res.status(404).json({ message: MESSAGES.todo.create.fail });
     }
-  })
+  });
+
+  app.get(ENDPOINTS.createTodo, (req, res) => {
+    
+  });
+
 };
