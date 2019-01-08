@@ -20,7 +20,7 @@ module.exports = (app) => {
   });
 
   app.get(ENDPOINTS.createTodo, (req, res) => {
-    
+    res.render('create');
   });
 
 };

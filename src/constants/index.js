@@ -1,5 +1,5 @@
 const ENDPOINTS = {
-  todo: '/todo',
+  todo: '/todos',
   createTodo: '/todo/create',
 };
 
