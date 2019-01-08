@@ -3,17 +3,15 @@ const Todo = require('../database/models/Todo');
 
 module.exports = (app) => {
   app.post(ENDPOINTS.todo, async (req, res) => {
-    await Todo.create(req.body);
+    const todo = await Todo.create(req.body);
 
-    res.json({
-      message: MESSAGES.todo.create.success,
-    });
+    res.redirect(`${ENDPOINTS.todo}/${todo.id}`);
   });
 
   app.get(`${ENDPOINTS.todo}/:id`, async (req, res) => {
     try {
       const todo = await Todo.findById(req.params.id);
-      res.json(todo);
+      res.render('show', { todo });
     } catch (e) {
       res.status(404).json({ message: MESSAGES.todo.create.fail });
     }
@@ -22,5 +20,4 @@ module.exports = (app) => {
   app.get(ENDPOINTS.createTodo, (req, res) => {
     res.render('create');
   });
-
 };

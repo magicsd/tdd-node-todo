@@ -4,9 +4,35 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <title>Todo App</title>
 </head>
 <body>
-  <h1>Create a todo</h1>
+  <div class="container">
+    <h1>Create a todo</h1>
+    <form action="/todos" method="POST">
+      <div class="form-group">
+        <label for="todoTitle">Title</label>
+        <input
+          name="title"
+          id="todoTitle"
+          type="text"
+          class="form-control"
+          placeholder="Enter title.."
+        >
+      </div>
+      <div class="form-group">
+        <label for="todoDescription">Description</label>
+        <textarea
+          name="description"
+          id="todoDescription"
+          rows="3"
+          class="form-control"
+          placeholder="Enter description.."
+        ></textarea>
+      </div>
+      <button type="submit" id="todoCreate" class="btn btn-primary">Create</button>
+    </form>
+  </div>
 </body>
 </html>
