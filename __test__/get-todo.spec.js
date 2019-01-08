@@ -11,13 +11,10 @@ describe('Get Single Todo', () => {
 
     const { status, body } = await server.get(`${ENDPOINTS.todo}/${createdTodo.id}`);
 
-    console.log('BODY', body);
-
     expect(status).toBe(200);
     expect(body).toEqual({
       ...todo,
       id: expect.any(String),
     });
-
   });
 });

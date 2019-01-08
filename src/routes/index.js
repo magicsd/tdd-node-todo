@@ -13,11 +13,6 @@ module.exports = (app) => {
   app.get(`${ENDPOINTS.todo}/:id`, async (req, res) => {
     const todo = await Todo.findById(req.params.id);
 
-    res.json({
-      title: todo.title,
-      description: todo.description,
-      isCompleted: todo.isCompleted,
-      id: todo.id,
-    });
+    res.json(todo);
   })
 };
