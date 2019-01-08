@@ -9,4 +9,15 @@ module.exports = (app) => {
       message: MESSAGES.todo.create.success,
     });
   });
+
+  app.get(`${ENDPOINTS.todo}/:id`, async (req, res) => {
+    const todo = await Todo.findById(req.params.id);
+
+    res.json({
+      title: todo.title,
+      description: todo.description,
+      isCompleted: todo.isCompleted,
+      id: todo.id,
+    });
+  })
 };

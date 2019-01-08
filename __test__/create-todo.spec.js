@@ -1,15 +1,7 @@
-const faker = require('faker');
-const supertest = require('supertest');
-const { app } = require('../src/');
-const server = supertest(app);
 const Todo = require('../src/database/models/Todo');
-const { ENDPOINTS, MESSAGES } = require('../src/constants/');
-
-const generateTodo = () => ({
-  title: faker.lorem.sentence(),
-  description: faker.lorem.sentences(3),
-  isCompleted: false,
-});
+const { ENDPOINTS, MESSAGES } = require('../src/constants');
+const server = require('../utils/setup');
+const { generateTodo } = require('../utils/generate');
 
 describe('ToDo Creation Process', () => {
   test('Should create a todo', async () => {

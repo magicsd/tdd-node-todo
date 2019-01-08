@@ -1,5 +1,5 @@
 const ENDPOINTS = {
-  todo: '/todos',
+  todo: '/todo',
 };
 
 const MESSAGES = {
