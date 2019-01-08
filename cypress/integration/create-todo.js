@@ -13,6 +13,7 @@ describe('Todo Creation Process', () => {
     const todo = generateTodo();
 
     cy.visit(`${homePage}${ENDPOINTS.createTodo}`);
+    cy.get('h1').should('have.text', 'Create a todo');
     cy.get('#todoTitle').type(todo.title);
     cy.get('#todoDescription').type(todo.description);
     cy.get('#todoCreate').should('have.text', 'Create');
