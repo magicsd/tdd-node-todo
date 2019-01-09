@@ -20,4 +20,10 @@ module.exports = (app) => {
   app.get(ENDPOINTS.createTodo, (req, res) => {
     res.render('create');
   });
+
+  app.post(ENDPOINTS.createTodo, async (req, res) => {
+    const todo = await Todo.create(req.body);
+
+    res.json(todo);
+  });
 };
