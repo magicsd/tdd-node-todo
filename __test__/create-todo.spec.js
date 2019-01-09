@@ -8,10 +8,9 @@ describe('ToDo Creation Process', () => {
 
     const todo = generateTodo();
 
-    const { status, body } = await server.post(ENDPOINTS.todo).send(todo);
+    const { status, text } = await server.post(ENDPOINTS.todo).send(todo);
 
-    expect(status).toBe(200);
-    expect(body.message).toBe(MESSAGES.todo.create.success)
+    expect(status).toBe(302);
 
     const todoFromDatabase = await Todo.find({ title: todo.title });
 

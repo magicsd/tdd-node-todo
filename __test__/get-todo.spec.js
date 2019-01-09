@@ -15,13 +15,12 @@ describe('Get Single Todo', () => {
   test('Should get single todo', async () => {
     const createdTodo = await Todo.create(todo);
 
-    const { status, body } = await server.get(getEndpoint(createdTodo.id));
+    const { status, text } = await server.get(getEndpoint(createdTodo.id));
 
     expect(status).toBe(200);
-    expect(body).toEqual({
-      ...todo,
-      id: expect.any(String),
-    });
+    expect(text).toMatch(todo.title);
+    expect(text).toMatch(todo.description);
+
   });
 
   test('Should get error message if todo was not found', async () => {
